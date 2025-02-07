@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
+import Spinner from "@/components/Spinner";
 
 type HomePageProps = {
   searchParams: {
@@ -22,7 +23,9 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
         <h1 className="text-3xl font-bold mb-4">Our Products</h1>
         <SearchBar />
         <Filter />
-        <ProductList searchParams={searchParams} />
+        <Suspense fallback={<Spinner />}>
+          <ProductList searchParams={searchParams} />
+        </Suspense>
       </main>
       <Footer />
     </>

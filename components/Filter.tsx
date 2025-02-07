@@ -4,7 +4,7 @@
 import React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const availableColors = ["blue", "white", "grey", "bark brown", "black"];
+const availableColors = ["blue", "white", "grey", "dark brown", "black"];
 
 const Filter = () => {
   const router = useRouter();
