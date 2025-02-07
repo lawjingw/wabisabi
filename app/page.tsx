@@ -1,30 +1,34 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import ProductCard, { Product } from "../components/ProductCard";
+import ProductCard from "../components/ProductCard";
+import { Product } from "../lib/types";
 
 const sampleProducts: Product[] = [
   {
     id: 1,
     name: "Japanese Tea Set",
     price: 49.99,
-    imageUrl: "/images/tea-set.jpg",
+    imageUrl:
+      "https://cmsbcphmvkaofadmdnyy.supabase.co/storage/v1/object/public/products//product-1.jpg",
   },
   {
     id: 2,
     name: "Ceramic Bowl",
     price: 19.99,
-    imageUrl: "/images/bowl.jpg",
+    imageUrl:
+      "https://cmsbcphmvkaofadmdnyy.supabase.co/storage/v1/object/public/products//product-2.jpg",
   },
   {
     id: 3,
     name: "Zen Garden",
     price: 29.99,
-    imageUrl: "/images/zen-garden.jpg",
+    imageUrl:
+      "https://cmsbcphmvkaofadmdnyy.supabase.co/storage/v1/object/public/products//product-3.jpg",
   },
 ];
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   return (
     <>
       <Header />

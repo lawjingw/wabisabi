@@ -1,14 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-
-export interface Product {
-  id: number;
-  name: string;
-  description?: string;
-  price: number;
-  imageUrl?: string;
-}
+import { Product } from "../lib/types";
 
 interface ProductCardProps {
   product: Product;
@@ -22,6 +15,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Image
             src={product.imageUrl}
             alt={product.name}
+            width={300}
+            height={200}
             className="w-full h-48 object-cover mb-4 rounded-md"
           />
         )}
