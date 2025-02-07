@@ -2,8 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-bg: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e5e5e5;
+}
+
 body {
   margin: 0;
-  font-family: sans-serif;
-  /* ...additional global styles... */
+  font-family: var(--font-geist-sans);
+  color: var(--text-primary);
+  background-color: var(--primary-bg);
+}
+
+.product-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10;
+}
+
+.btn-primary {
+  @apply px-6 py-2 bg-gray-900 text-white hover:bg-gray-800 rounded-none transition-colors;
 }

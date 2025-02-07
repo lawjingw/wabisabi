@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import { getProductById } from "@/lib/dataApi";
 
@@ -16,35 +14,75 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
 
   if (!product) {
     return (
-      <>
-        <Header />
-        <main className="container mx-auto p-4">
-          <h2 className="text-2xl">Product Not Found</h2>
-        </main>
-        <Footer />
-      </>
+      <div className="max-w-2xl mx-auto text-center">
+        <h2 className="text-2xl font-serif text-gray-800">Product Not Found</h2>
+        <p className="mt-4 text-gray-600">
+          The product you&apos;re looking for doesn&apos;t exist.
+        </p>
+      </div>
     );
   }
 
   return (
-    <>
-      <Header />
-      <main className="container mx-auto p-4">
-        <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="space-y-4">
         {product.imageUrls && product.imageUrls.length > 0 && (
-          <Image
-            width={500}
-            height={400}
-            src={product.imageUrls[0]}
-            alt={product.name}
-            className="w-full h-auto mb-4 rounded-md"
-          />
+          <div className="aspect-square relative overflow-hidden bg-gray-50">
+            <Image
+              fill
+              src={product.imageUrls[0]}
+              alt={product.name}
+              className="object-cover object-center"
+              priority
+            />
+          </div>
         )}
-        <p className="mb-4">{product.description}</p>
-        <p className="text-xl font-bold">${product.price.toFixed(2)}</p>
-      </main>
-      <Footer />
-    </>
+        {product.imageUrls && product.imageUrls.length > 1 && (
+          <div className="grid grid-cols-4 gap-4">
+            {product.imageUrls.slice(1).map((url, index) => (
+              <div
+                key={index}
+                className="aspect-square relative overflow-hidden"
+              >
+                <Image
+                  fill
+                  src={url}
+                  alt={`${product.name} view ${index + 2}`}
+                  className="object-cover object-center hover:opacity-75 transition-opacity"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="space-y-8">
+        <div className="border-b border-gray-200 pb-8">
+          <h1 className="text-3xl font-serif text-gray-900 mb-4">
+            {product.name}
+          </h1>
+          <p className="text-2xl text-gray-700">${product.price.toFixed(2)}</p>
+        </div>
+
+        <div className="prose prose-gray max-w-none">
+          <p className="text-gray-600 leading-relaxed">{product.description}</p>
+        </div>
+
+        <button
+          className="w-full bg-gray-900 text-white py-4 px-8 hover:bg-gray-800 
+              transition-colors duration-200 text-sm uppercase tracking-wider"
+        >
+          Add to Cart
+        </button>
+
+        {product.color && (
+          <div className="pt-8 border-t border-gray-200">
+            <h3 className="text-sm font-medium text-gray-900 mb-2">Color</h3>
+            <p className="text-gray-600 capitalize">{product.color}</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

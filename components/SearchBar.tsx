@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
 
 import React from "react";
@@ -10,7 +11,6 @@ const SearchBar = () => {
 
   const updateSearchQuery = (query: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     query ? params.set("q", query) : params.delete("q");
     router.push(`/?${params.toString()}`);
   };
@@ -19,21 +19,42 @@ const SearchBar = () => {
     updateSearchQuery(e.target.value);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
+
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="flex mb-4">
-      <input
-        type="text"
-        placeholder="Search products..."
-        value={searchQuery}
-        onChange={handleChange}
-        className="px-2 py-1 rounded-l-md outline-none border"
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-3 rounded-r-md hover:bg-blue-600"
-      >
-        Search
-      </button>
+    <form onSubmit={handleSubmit} className="mb-8 relative">
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search our collection..."
+          value={searchQuery}
+          onChange={handleChange}
+          className="w-full px-4 py-3 border border-gray-200 rounded-none
+            placeholder:text-gray-400 text-gray-700 text-sm
+            focus:outline-none focus:border-gray-400 transition-colors"
+        />
+        <button
+          type="submit"
+          className="absolute right-0 top-0 h-full px-4
+            text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
+      </div>
     </form>
   );
 };

@@ -1,6 +1,4 @@
 import React, { Suspense } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
@@ -16,19 +14,38 @@ type HomePageProps = {
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
   return (
-    <>
-      <Header />
-      <main className="container mx-auto p-4">
-        <h2 className="text-2xl mb-2">Welcome to My E-commerce App</h2>
-        <h1 className="text-3xl font-bold mb-4">Our Products</h1>
-        <SearchBar />
-        <Filter />
-        <Suspense fallback={<Spinner />}>
-          <ProductList searchParams={searchParams} />
-        </Suspense>
-      </main>
-      <Footer />
-    </>
+    <div className="max-w-7xl mx-auto">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-serif text-gray-900 mb-4">
+          Wabi-Sabi Living
+        </h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Discover our curated collection of Japanese-inspired homeware, where
+          beauty meets simplicity in everyday objects.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <aside className="lg:col-span-1">
+          <div className="sticky top-4">
+            <Filter />
+          </div>
+        </aside>
+
+        <div className="lg:col-span-3">
+          <SearchBar />
+          <Suspense
+            fallback={
+              <div className="min-h-[400px] flex items-center justify-center">
+                <Spinner />
+              </div>
+            }
+          >
+            <ProductList searchParams={searchParams} />
+          </Suspense>
+        </div>
+      </div>
+    </div>
   );
 };
 
