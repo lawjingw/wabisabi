@@ -31,7 +31,7 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
       <Header />
       <main className="container mx-auto p-4">
         <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
-        {product.imageUrls && (
+        {product.imageUrls && product.imageUrls.length > 0 && (
           <Image
             width={500}
             height={400}
