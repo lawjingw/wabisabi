@@ -160,6 +160,7 @@ CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
+    colors TEXT,
     price DECIMAL(10, 2) NOT NULL,
     category_id INT REFERENCES categories(id),
     image_urls TEXT[],

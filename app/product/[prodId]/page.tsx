@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Product } from "@/lib/types";
 import Image from "next/image";
+import { getProductById } from "@/lib/dataApi";
 
 type ProductDetailsProps = {
   params: {
@@ -10,33 +10,9 @@ type ProductDetailsProps = {
   };
 };
 
-const sampleProducts: Product[] = [
-  {
-    id: 1,
-    name: "Japanese Tea Set",
-    price: 49.99,
-    imageUrl:
-      "https://cmsbcphmvkaofadmdnyy.supabase.co/storage/v1/object/public/products//product-1.jpg",
-  },
-  {
-    id: 2,
-    name: "Ceramic Bowl",
-    price: 19.99,
-    imageUrl:
-      "https://cmsbcphmvkaofadmdnyy.supabase.co/storage/v1/object/public/products//product-2.jpg",
-  },
-  {
-    id: 3,
-    name: "Zen Garden",
-    price: 29.99,
-    imageUrl:
-      "https://cmsbcphmvkaofadmdnyy.supabase.co/storage/v1/object/public/products//product-3.jpg",
-  },
-];
-
 const ProductDetails = async ({ params }: ProductDetailsProps) => {
   const { prodId } = await params;
-  const product = sampleProducts.find((p) => p.id === Number(prodId));
+  const product = await getProductById(Number(prodId));
 
   if (!product) {
     return (
@@ -55,11 +31,11 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
       <Header />
       <main className="container mx-auto p-4">
         <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
-        {product.imageUrl && (
+        {product.imageUrls && (
           <Image
             width={500}
-            height={300}
-            src={product.imageUrl}
+            height={400}
+            src={product.imageUrls[0]}
             alt={product.name}
             className="w-full h-auto mb-4 rounded-md"
           />
