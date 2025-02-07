@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
@@ -23,7 +22,6 @@ const Header = () => {
             Contact
           </Link>
         </div>
-        <SearchBar />
       </nav>
     </header>
   );

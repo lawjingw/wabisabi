@@ -6,7 +6,7 @@ import Image from "next/image";
 
 type ProductDetailsProps = {
   params: {
-    prodId: number;
+    prodId: string;
   };
 };
 
@@ -34,9 +34,9 @@ const sampleProducts: Product[] = [
   },
 ];
 
-const ProductDetails = ({ params }: ProductDetailsProps) => {
-  const productId = Number(params.prodId);
-  const product = sampleProducts.find((p) => p.id === productId);
+const ProductDetails = async ({ params }: ProductDetailsProps) => {
+  const { prodId } = await params;
+  const product = sampleProducts.find((p) => p.id === Number(prodId));
 
   if (!product) {
     return (
