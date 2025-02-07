@@ -1,66 +1,35 @@
-import React from "react";
-import Link from "next/link";
+"use client";
 
-const Header = () => {
+import React, { useState } from "react";
+import SearchBar from "./SearchBar";
+import Navigation from "./Navigation";
+
+function Header() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const handleSearchClick = () => {
+    setIsSearchOpen(true);
+  };
+
   return (
     <header className="bg-white border-b border-gray-200">
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-serif text-gray-800">
-            WabiSabi
-          </Link>
-          <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              HOME
-            </Link>
-            <Link
-              href="/collections"
-              className="text-gray-600 hover:text-gray-900"
-            >
-              COLLECTIONS
-            </Link>
-            <Link href="/about" className="text-gray-600 hover:text-gray-900">
-              ABOUT
-            </Link>
-          </div>
-          <div className="flex items-center space-x-4">
-            <button className="text-gray-600 hover:text-gray-900">
-              <span className="sr-only">Search</span>
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
-            <button className="text-gray-600 hover:text-gray-900">
-              <span className="sr-only">Cart</span>
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                />
-              </svg>
-            </button>
+      {isSearchOpen && (
+        <div>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsSearchOpen(false)}
+          />
+          <div className="fixed top-0 left-0 right-0 bg-white z-50 py-4 shadow-lg">
+            <div className="container mx-auto px-4">
+              <SearchBar onClose={() => setIsSearchOpen(false)} />
+            </div>
           </div>
         </div>
-      </nav>
+      )}
+
+      <Navigation onSearchClick={handleSearchClick} />
     </header>
   );
-};
+}
 
 export default Header;

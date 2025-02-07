@@ -8,7 +8,7 @@ type ProductDetailsProps = {
   };
 };
 
-const ProductDetails = async ({ params }: ProductDetailsProps) => {
+async function ProductDetails({ params }: ProductDetailsProps) {
   const { prodId } = await params;
   const product = await getProductById(Number(prodId));
 
@@ -84,6 +84,6 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductDetails;

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Footer: React.FC = () => {
+function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100">
       <div className="container mx-auto px-4 py-12">
@@ -120,6 +120,6 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

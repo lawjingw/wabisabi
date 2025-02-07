@@ -1,13 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  onClose: () => void;
+}
+
+function SearchBar({ onClose }: SearchBarProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("q") || "";
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const updateSearchQuery = (query: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -21,42 +30,43 @@ const SearchBar = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    onClose();
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8 relative">
-      <div className="relative">
-        <input
-          type="text"
-          placeholder="Search our collection..."
-          value={searchQuery}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-200 rounded-none
-            placeholder:text-gray-400 text-gray-700 text-sm
-            focus:outline-none focus:border-gray-400 transition-colors"
-        />
-        <button
-          type="submit"
-          className="absolute right-0 top-0 h-full px-4
-            text-gray-500 hover:text-gray-700 transition-colors"
+    <form onSubmit={handleSubmit} className="relative">
+      <input
+        ref={inputRef}
+        type="text"
+        placeholder="Search our collection..."
+        value={searchQuery}
+        onChange={handleChange}
+        className="w-full px-4 py-3 pr-12 border-none text-gray-700 text-lg
+          placeholder:text-gray-400 focus:outline-none focus:ring-0"
+      />
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute right-4 top-1/2 -translate-y-1/2
+          text-gray-400 hover:text-gray-600"
+      >
+        <span className="sr-only">Close search</span>
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </button>
-      </div>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
     </form>
   );
-};
+}
 
 export default SearchBar;

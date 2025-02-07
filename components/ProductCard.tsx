@@ -7,7 +7,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/product/${product.id}`}>
       <div className="group relative">
@@ -42,6 +42,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
     </Link>
   );
-};
+}
 
 export default ProductCard;

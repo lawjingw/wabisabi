@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import SearchBar from "../components/SearchBar";
 import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import Spinner from "@/components/Spinner";
@@ -12,7 +11,7 @@ type HomePageProps = {
   };
 };
 
-const HomePage = async ({ searchParams }: HomePageProps) => {
+async function HomePage({ searchParams }: HomePageProps) {
   return (
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-12">
@@ -33,7 +32,6 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
         </aside>
 
         <div className="lg:col-span-3">
-          <SearchBar />
           <Suspense
             fallback={
               <div className="min-h-[400px] flex items-center justify-center">
@@ -47,6 +45,6 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
       </div>
     </div>
   );
-};
+}
 
 export default HomePage;
