@@ -7,7 +7,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Link href={`/product/${product.id}`}>
       <div className="border rounded-lg p-4 hover:shadow-lg cursor-pointer">
