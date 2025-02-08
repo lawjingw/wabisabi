@@ -3,12 +3,14 @@ import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import Spinner from "@/components/Spinner";
 
+type TsearchParams = {
+  q: string | null;
+  colors: string | null;
+  maxPrice: string | null;
+};
+
 type HomePageProps = {
-  searchParams: {
-    q: string | null;
-    colors: string | null;
-    maxPrice: string | null;
-  };
+  searchParams: Promise<TsearchParams>;
 };
 
 async function HomePage({ searchParams }: HomePageProps) {

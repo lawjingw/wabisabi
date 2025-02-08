@@ -2,12 +2,14 @@ import { getProducts } from "@/lib/dataApi";
 import EmptyProductList from "./EmptyProductList";
 import ProductCard from "./ProductCard";
 
+type TsearchParams = {
+  q: string | null;
+  colors: string | null;
+  maxPrice: string | null;
+};
+
 type ProductListProps = {
-  searchParams: {
-    q: string | null;
-    colors: string | null;
-    maxPrice: string | null;
-  };
+  searchParams: Promise<TsearchParams>;
 };
 
 async function ProductList({ searchParams }: ProductListProps) {

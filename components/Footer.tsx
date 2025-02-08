@@ -18,7 +18,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/new-arrivals"
+                  href=""
                   className="text-sm text-gray-600 hover:text-gray-900"
                 >
                   New Arrivals
@@ -26,7 +26,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  href="/bestsellers"
+                  href=""
                   className="text-sm text-gray-600 hover:text-gray-900"
                 >
                   Bestsellers
@@ -34,7 +34,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  href="/collections"
+                  href=""
                   className="text-sm text-gray-600 hover:text-gray-900"
                 >
                   Collections
@@ -48,7 +48,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/our-story"
+                  href=""
                   className="text-sm text-gray-600 hover:text-gray-900"
                 >
                   Our Story
@@ -56,7 +56,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href=""
                   className="text-sm text-gray-600 hover:text-gray-900"
                 >
                   Contact
@@ -64,7 +64,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  href="/shipping"
+                  href=""
                   className="text-sm text-gray-600 hover:text-gray-900"
                 >
                   Shipping
@@ -103,13 +103,13 @@ function Footer() {
             </p>
             <div className="flex space-x-6">
               <Link
-                href="/privacy"
+                href=""
                 className="text-sm text-gray-600 hover:text-gray-900"
               >
                 Privacy Policy
               </Link>
               <Link
-                href="/terms"
+                href=""
                 className="text-sm text-gray-600 hover:text-gray-900"
               >
                 Terms of Service

@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { getProductById } from "@/lib/dataApi";
 
+type TParams = {
+  prodId: string;
+};
+
 type ProductDetailsProps = {
-  params: {
-    prodId: string;
-  };
+  params: Promise<TParams>;
 };
 
 async function ProductDetails({ params }: ProductDetailsProps) {
