@@ -30,6 +30,7 @@ async function ProductDetails({ params }: ProductDetailsProps) {
             <div className="aspect-square relative overflow-hidden bg-gray-50">
               <Image
                 fill
+                sizes="(min-width: 640px) 50vw, 100vw"
                 src={product.imageUrls[0]}
                 alt={product.name}
                 className="object-cover object-center"
