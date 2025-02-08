@@ -23,3 +23,9 @@ body {
 .btn-primary {
   @apply px-6 py-2 bg-gray-900 text-white hover:bg-gray-800 rounded-none transition-colors;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

@@ -22,21 +22,19 @@ function ProductCard({ product }: ProductCardProps) {
                 group-hover:scale-105 transition-transform duration-300"
             />
           )}
-          <div
-            className="absolute inset-0 bg-black bg-opacity-0 
-            group-hover:bg-opacity-10 transition-opacity duration-300"
-          />
         </div>
-        <div className="mt-6 space-y-2">
+        <div className="mt-4 sm:mt-6 space-y-1 sm:space-y-2">
           <h3
-            className="text-sm font-medium text-gray-900 group-hover:text-gray-700 
-            transition-colors"
+            className="text-sm sm:text-base font-medium text-gray-900 
+            group-hover:text-gray-700 transition-colors"
           >
             {product.name}
           </h3>
           <p className="text-sm text-gray-500">${product.price.toFixed(2)}</p>
           {product.color && (
-            <p className="text-xs text-gray-400 capitalize">{product.color}</p>
+            <p className="text-xs sm:text-sm text-gray-400 capitalize">
+              {product.color}
+            </p>
           )}
         </div>
       </div>
