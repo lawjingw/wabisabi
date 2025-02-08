@@ -15,8 +15,55 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WabiSabi Home",
-  description: "A modern home decor store",
+  metadataBase: new URL("https://wabisabi.vercel.app"),
+  title: {
+    default: "WabiSabi | Japanese-Inspired Homeware",
+    template: "%s | WabiSabi",
+  },
+  description:
+    "Discover our curated collection of Japanese-inspired homeware, where beauty meets simplicity in everyday objects.",
+  keywords: [
+    "Japanese homeware",
+    "minimalist design",
+    "home decor",
+    "Japanese design",
+    "wabi-sabi",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://wabisabi.vercel.app",
+    siteName: "WabiSabi",
+    title: "WabiSabi | Japanese-Inspired Homeware",
+    description:
+      "Discover our curated collection of Japanese-inspired homeware, where beauty meets simplicity in everyday objects.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "WabiSabi Japanese Homeware",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WabiSabi | Japanese-Inspired Homeware",
+    description:
+      "Discover our curated collection of Japanese-inspired homeware, where beauty meets simplicity in everyday objects.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

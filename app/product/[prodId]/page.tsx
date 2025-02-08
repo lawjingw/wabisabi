@@ -1,6 +1,7 @@
 import { getProductById } from "@/lib/dataApi";
 import ProductImage from "@/components/ProductImage";
 import ProductNotFound from "@/components/ProductNotFound";
+import { Metadata } from "next";
 
 type TParams = {
   prodId: string;
@@ -9,6 +10,49 @@ type TParams = {
 type ProductDetailsProps = {
   params: Promise<TParams>;
 };
+
+export async function generateMetadata({
+  params,
+}: ProductDetailsProps): Promise<Metadata> {
+  const { prodId } = await params;
+  const product = await getProductById(Number(prodId));
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      description: "The requested product could not be found.",
+    };
+  }
+
+  const url = `https://wabisabi.vercel.app/product/${prodId}`;
+
+  return {
+    title: product.name,
+    description:
+      product.description ||
+      `Beautiful ${product.name} from our Japanese-inspired collection`,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: product.name,
+      description:
+        product.description ||
+        `Beautiful ${product.name} from our Japanese-inspired collection`,
+      url,
+      images: product.imageUrls
+        ? [
+            {
+              url: product.imageUrls[0],
+              width: 800,
+              height: 600,
+              alt: product.name,
+            },
+          ]
+        : [],
+    },
+  };
+}
 
 async function ProductDetails({ params }: ProductDetailsProps) {
   const { prodId } = await params;
