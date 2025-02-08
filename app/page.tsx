@@ -25,13 +25,11 @@ async function HomePage({ searchParams }: HomePageProps) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
-        <aside className="lg:col-span-1 order-2 lg:order-1">
-          <div className="sticky top-4">
-            <Filter />
-          </div>
+        <aside className="lg:col-span-1 order-1">
+          <Filter />
         </aside>
 
-        <div className="lg:col-span-3 order-1 lg:order-2">
+        <div className="lg:col-span-3 order-2">
           <Suspense
             fallback={
               <div className="min-h-[300px] sm:min-h-[400px] flex items-center justify-center">

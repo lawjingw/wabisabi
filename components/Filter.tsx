@@ -50,7 +50,7 @@ const Filter = () => {
       <div className="space-y-6">
         <div>
           <h4 className="text-xs font-medium text-gray-900 mb-3">Color</h4>
-          <div className="space-y-2">
+          <div className="lg:space-y-2 flex items-center space-x-4 lg:space-x-0 lg:flex-col lg:items-start">
             {availableColors.map((color) => (
               <label key={color} className="flex items-center">
                 <input
