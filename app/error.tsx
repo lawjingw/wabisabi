@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
-interface ErrorProps {
+type ErrorProps = {
   error: Error;
   reset: () => void;
-}
+};
 
 function Error({ error, reset }: ErrorProps) {
   useEffect(() => {

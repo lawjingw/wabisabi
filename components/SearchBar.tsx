@@ -4,9 +4,9 @@
 import React, { useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-interface SearchBarProps {
+type SearchBarProps = {
   onClose: () => void;
-}
+};
 
 function SearchBar({ onClose }: SearchBarProps) {
   const router = useRouter();

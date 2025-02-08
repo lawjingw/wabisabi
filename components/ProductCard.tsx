@@ -3,9 +3,9 @@ import React from "react";
 import Link from "next/link";
 import { Product } from "../lib/types";
 
-interface ProductCardProps {
+type ProductCardProps = {
   product: Product;
-}
+};
 
 function ProductCard({ product }: ProductCardProps) {
   return (
